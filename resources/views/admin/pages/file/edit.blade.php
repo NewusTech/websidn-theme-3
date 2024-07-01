@@ -24,7 +24,7 @@
             @if ($file->path)
                 <div class="form-group">
                     <label>File Saat Ini</label><br>
-                    <a href="{{ asset('storage/' . $file->path) }}" target="_blank">Download</a>
+                    <a href="{{ Storage::disk('s3')->url($file->path) }}" target="_blank">Download</a>
                 </div>
             @endif
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

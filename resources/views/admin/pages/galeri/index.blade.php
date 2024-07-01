@@ -69,7 +69,7 @@
                             <td>{{ $galeri->id }}</td>
                             <td>
                                 @if ($galeri->images)
-                                    <img src="{{ asset('storage/' . $galeri->images->path) }}" alt="Gambar Home"
+                                    <img src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="Gambar Home"
                                         width="300" height="200">
                                 @else
                                     Gambar tidak tersedia

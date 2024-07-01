@@ -45,12 +45,12 @@
                 <div class="container px-0">
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
-                            @if ($logos->images)
-                                <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
-                            @else
-                                Gambar tidak tersedia
-                            @endif
-                        @endforeach
+                                @if ($logos->images)
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                @else
+                                    Gambar tidak tersedia
+                                @endif
+                            @endforeach
                         <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="fa fa-bars text-primary"></span>
                         </button>
@@ -93,7 +93,7 @@
                             <div class="card-body text-dark text-center">
                               <h4 class="card-title mb-3"><b>Brosur {{ $loop->iteration }}</b></h4>
                               {{-- <p class="card-text">sdkk</p> --}}
-                              <a href="{{ asset('storage/' . $file_brosurs->path) }}" class="btn btn-primary w-100 text-white">Download</a>
+                              <a href="{{ Storage::disk('s3')->url($file_brosurs->path) }}" class="btn btn-primary w-100 text-white">Download</a>
                             </div>
                         </div>
                     </div> 
@@ -113,12 +113,15 @@
                         <div class="footer-item">
                             @foreach ($logo as $logos)
                                 @if ($logos->images)
-                                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                                 @else
                                     Gambar tidak tersedia
                                 @endif
                             @endforeach
-                            <p class="text-white">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tempor dui, non consectetur enim.</p>
+                            @foreach ($about as $abouts)
+                            <p class="text-white">{{ $abouts->text }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">

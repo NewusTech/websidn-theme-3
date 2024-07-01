@@ -46,7 +46,7 @@
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
                             @if ($logos->images)
-                                <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                             @else
                                 Gambar tidak tersedia
                             @endif
@@ -94,36 +94,21 @@
                     <h1 class="display-6 mb-4">Ikuti Berita Terbaru Kami </h1>
                 </div>
                 <div class="row justify-content-between">
+                    @foreach ($blog as $artikel)
                     <div class="col-lg-4 col-md-6 mb-4 px-4">
                         <div class="card" >
                             <a href="/">
-                            <img src="img/service_1.png" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <img src="{{ Storage::disk('s3')->url($artikel->image) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">{{ $artikel->nama_penulis }} , {{ $artikel->date }}</h6>
+                                <h4 class="card-title"><a href="/{{ $artikel->slug }}">{{ $artikel->judul }}</a></h4>
+                                <p class="card-text text-dark">{{ $artikel->deskripsi_singkat }} .....</p>
+                                <a href="#" class="card-link">#{{ $artikel->kategoris->kategori }}</a>
+                                {{-- <a href="#" class="btn btn-secondary mt-2 text-white"><p>{{ $artikel->kategoris->kategori }}</p></a> --}}
                             </div></a>
                         </div>
                     </div> 
-                    <div class="col-lg-4 col-md-6 mb-4 px-4">
-                        <div class="card" >
-                            <a href="/">
-                            <img src="img/service_1.png" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div></a>
-                        </div>
-                    </div> 
-                    <div class="col-lg-4 col-md-6 mb-4 px-4" >
-                        <div class="card">
-                            <a href="/">
-                            <img src="img/service_1.png" class="card-img-top" alt="...">
-                            <div class="card-body text-center">
-                              <h4 class="card-title">Card title</h4>
-                              <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div></a>
-                        </div>
-                    </div> 
+                     @endforeach
                 </div>
             </div>
         </div>
@@ -140,12 +125,15 @@
                         <div class="footer-item">
                             @foreach ($logo as $logos)
                                 @if ($logos->images)
-                                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                                 @else
                                     Gambar tidak tersedia
                                 @endif
                             @endforeach
-                            <p class="text-white">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tempor dui, non consectetur enim.</p>
+                            @foreach ($about as $abouts)
+                            <p class="text-white">{{ $abouts->text }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">

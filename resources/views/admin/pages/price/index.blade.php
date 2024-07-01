@@ -78,7 +78,8 @@
                             <td>{{ $price->item3 }}</td>
                             <td>{{ $price->item4 }}</td>
                             <td>{{ $price->item5 }}</td>
-                            <td><img src="{{ asset('storage/' . $price->image) }}" width="100" class="img-fluid"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($price->image) }}" width="100" class="img-fluid">
+                            </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('price.edit', $price->id) }}" class="btn btn-warning btn-sm">Edit</a>

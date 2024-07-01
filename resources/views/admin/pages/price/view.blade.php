@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="path">Image</label>
-            <img src="{{ asset('storage/' . $price->image) }}" width="100">
+            <img src="{{ Storage::disk('s3')->url($price->image) }}" width="100">
             <button type="button" class="btn btn-primary mt-2" data-toggle="modal" data-target="#previewModal"><i
                     class="fas fa-fw fa-eye"></i> lihat
             </button>
@@ -52,7 +52,7 @@
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <img src="{{ asset('storage/' . $price->image) }}" class="img-fluid" alt="Preview Gambar">
+                        <img src="{{ Storage::disk('s3')->url($price->image) }}" class="img-fluid" alt="Preview Gambar">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

@@ -45,23 +45,23 @@
                 <div class="container px-0">
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
-                                @if ($logos->images)
-                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
-                                @else
-                                    Gambar tidak tersedia
-                                @endif
-                            @endforeach
+                            @if ($logos->images)
+                                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                            @else
+                                Gambar tidak tersedia
+                            @endif
+                        @endforeach
                         <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="fa fa-bars text-primary"></span>
                         </button>
                         <div class="collapse navbar-collapse bg-light py-1" id="navbarCollapse">
                             <div class="navbar-nav mx-auto border-top">
                                 <a href="/" class="nav-item nav-link fs-5"><b>Beranda</b></a>
-                                <a href="/layanan" class="nav-item nav-link active fs-5"><b>Layanan</b></a>
+                                <a href="/layanan" class="nav-item nav-link fs-5"><b>Layanan</b></a>
                                 <a href="/galleri" class="nav-item nav-link fs-5"><b>Galeri</b></a>
                                 <a href="/portofolio" class="nav-item nav-link fs-5"><b>Portofolio</b></a>
                                 <a href="/tentang-kami" class="nav-item nav-link fs-5"><b>Tentang Kami</b></a> 
-                                <a href="/artikel" class="nav-item nav-link fs-5"><b>Artikel</b></a>
+                                <a href="/artikel" class="nav-item nav-link active fs-5"><b>Artikel</b></a>
                             </div>
                             <div class="d-flex align-items-center flex-nowrap pt-xl-0">
                                 <a href="/kontak-kami" class="btn btn-primary btn-primary-outline-0 rounded-pill py-3 px-4 ms-4">Hubungi Kami</a>
@@ -73,85 +73,50 @@
         </div>
         <!-- Navbar End -->
 
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb py-4 "style="background: var(--bs-primary);">
-            <div class="container text-center py-4">
-                <h3 class="text-white display-3 mb-4">Layanan Kami</h1>
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="/" class="text-white">Beranda</a></li>
-                    <li class="breadcrumb-item active text-white">Layanan</li>
-                </ol>    
-            </div>
-        </div>
-        <!-- Header End -->
+        
 
         
-        <!-- Services Start -->
-        <div class="container-fluid bg-third services py-2">
-            <div class="container py-3">
-                <div class="mx-auto text-center mb-3" style="max-width: 800px;">
-                    <p class="fs-4 text-uppercase text-center text-primary"><b>LAYANAN KAMI</b></p>
-                    <h1 class="display-6">Makeup Artist</h1>
-                </div>
-                <div class="row g-4">
-                    @foreach ($service as $layanan)
-                    <div class="col-lg-6">
-                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <div class="services-content text-start">
-                                        <h3>{{ $layanan->judul }}</h3>
-                                        <p>{{ $layanan->detail }}</p>
-                                        <div class="text-center">
-                                            <a href="/document-brosur" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 text-center">Read More</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                        <img src="{{ Storage::disk('s3')->url($layanan->image) }}" class="img-fluid rounded" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
+        <!-- Blog Details Section Begin -->
+    @foreach ($carousel as $item)
+        <div class="blog-hero set-bg" >
+            <img src="{{ Storage::disk('s3')->url($item->path) }}" class="img-fluid" alt="">
         </div>
-        <!-- Services End -->
-
-        <!-- Pricing Start -->
-        <div class="container-fluid pricing py-2 "  >
-            <div class="container py-3 ">
-                <div class="mb-2" style="max-width: 800px;">
-                    {{-- <p class="fs-4 text-uppercase text-center text-white"><b>PRICELIST</b></p> --}}
-                    <h1 class="display-6 text-white">Pricelist</h1>
-                </div>
-                <div class="owl-carousel pricing-carousel">
-                    @foreach ($price as $prices)
-                    <div class="pricing-item">
-                        <div class="rounded pricing-content">
-                            <div class="d-flex align-items-center justify-content-center bg-light rounded-top border-3 border-bottom border-primary p-3">
-                                <h5 class="text-primary text-uppercase text-bold mt-1"><b>{{ $prices->judul }}</b></h5>
-                            </div>
-                            <div class="p-4" style="color: #ffffff"><b>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item1 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item2 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item3 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item4 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item5 }}</p>
-                                <a href="/document-price" class="btn btn-primary btn-center btn-primary-outline-0 rounded-pill my-2 px-4">See More</a></b>
-                            </div>
+    @endforeach
+<section class="blog-details-section">
+    <div class="container">
+        <div class="row">
+            {{-- @foreach ($blog as $artikel) --}}
+            <div class="col-lg-12">
+                <div class="blog-details-text">
+                    <div class="bd-title">
+                        <div class="">
+                            <a href="/"><i class="fa fa-home"></i> Beranda ></a>
+                            <a href="/artikel">Artikel ></a>
+                            <span>{{ $blog->judul }}</span>
                         </div>
+                        <h2>{{ $blog->judul }}</h2>
+                        
+                            <p><span>{{ $blog->nama_penulis }} | {{ $blog->date }}</span></p>
                     </div>
-                    @endforeach
+                    <div class="bd-pics " style="display: flex; justify-content: center;">
+                        <img src="{{ Storage::disk('s3')->url($blog->image) }}" class="img-fluid">
+                        
+                    </div>
+        
+                    <div class="bd-desc">
+                        <p>{{$blog->deskripsi}}</p>
+                    </div>
+                    
                     
                 </div>
             </div>
+            {{-- @endforeach --}}
         </div>
-        <!-- Pricing End -->
+    </div>
+</section>
+<!-- Blog Details Section End -->
+
+
 
         <!-- Footer Start -->
         <div class="container-fluid footer py-2">

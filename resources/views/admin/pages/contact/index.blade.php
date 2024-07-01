@@ -48,7 +48,7 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('contact.create') }}" class="btn btn-primary">Add Contact</a>
+        <a href="{{ route('contact.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Kontak</a>
     </div>
     <br>
     <div class="container-fluid bg-white">

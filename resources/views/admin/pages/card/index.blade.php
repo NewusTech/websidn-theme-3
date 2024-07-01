@@ -72,7 +72,7 @@
                             <td>{{ $card->kategori }}</td>
                             <td>{{ $card->judul }}</td>
                             <td>{{ $card->detail }}</td>
-                            <td><img src="{{ asset('storage/' . $card->image) }}" width="100"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($card->image) }}" width="100"></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('card.edit', $card->id) }}" class="btn btn-warning btn-sm">Edit</a>

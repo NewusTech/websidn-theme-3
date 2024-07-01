@@ -69,7 +69,8 @@
                         <tr>
                             <td>{{ $image->id }}</td>
                             <td>{{ $image->resolusi }}</td>
-                            <td><img src="{{ asset('storage/' . $image->path) }}" width="100" class="img-fluid"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($image->path) }}" width="100" class="img-fluid">
+                            </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('image.edit', $image->id) }}" class="btn btn-warning btn-sm"

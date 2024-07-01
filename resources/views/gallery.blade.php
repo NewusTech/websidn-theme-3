@@ -45,12 +45,12 @@
                 <div class="container px-0">
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
-                            @if ($logos->images)
-                                <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
-                            @else
-                                Gambar tidak tersedia
-                            @endif
-                        @endforeach
+                                @if ($logos->images)
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                @else
+                                    Gambar tidak tersedia
+                                @endif
+                            @endforeach
                         <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                             <span class="fa fa-bars text-primary"></span>
                         </button>
@@ -129,12 +129,12 @@
                                         @foreach ($gallery as $galeri)
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,12 +151,12 @@
                                         @if ($galeri->images && ($galeri->texts->heading == 'Bridal Makeup'))
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -174,12 +174,12 @@
                                         @if ($galeri->images && ($galeri->texts->heading == 'Special Occasion'))
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,12 +197,12 @@
                                         @if ($galeri->images && ($galeri->texts->heading == 'Fashion Makeup'))
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -220,12 +220,12 @@
                                         @if ($galeri->images && ($galeri->texts->heading == 'Photoshoot'))
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -251,12 +251,15 @@
                         <div class="footer-item">
                             @foreach ($logo as $logos)
                                 @if ($logos->images)
-                                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                                 @else
                                     Gambar tidak tersedia
                                 @endif
                             @endforeach
-                            <p class="text-white">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tempor dui, non consectetur enim.</p>
+                            @foreach ($about as $abouts)
+                            <p class="text-white">{{ $abouts->text }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">

@@ -6,10 +6,6 @@
         <form action="{{ route('blogconsole.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="judul">Judul</label>
-                <input type="text" name="judul" id="judul" class="form-control" required>
-            </div>
-            <div class="form-group">
                 <label for="code">Code</label>
                 <textarea name="code" id="code" class="form-control" rows="5" required></textarea>
             </div>

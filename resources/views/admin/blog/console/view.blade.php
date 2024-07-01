@@ -1,12 +1,15 @@
 @extends('admin.layouts.base')
-@section('title', 'BuatBlog')
+@section('title', 'DetailConsole')
 @section('content')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('blogconsoles') }}">Detail Console</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Console</li>
+        </ol>
+    </nav>
     <div class="container">
-        <h1>Detail Blog Console</h1>
-        <div class="form-group">
-            <label for="judul">Judul</label>
-            <input type="text" id="judul" class="form-control" value="{{ $blogconsole->judul }}" readonly>
-        </div>
+        <h1>Detail Console</h1>
         <div class="form-group">
             <label for="code">Code</label>
             <textarea id="code" class="form-control" rows="5" readonly>{{ $blogconsole->code }}</textarea>

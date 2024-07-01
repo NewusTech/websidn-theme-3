@@ -6,25 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('blogtags', function (Blueprint $table) {
+        Schema::create('multitagblog', function (Blueprint $table) {
             $table->id();
-            $table->string('tags');
-            $table->string('slug');
+            $table->foreignId('blog_id')->constrained('blogs')->onDelete('cascade');
+            $table->foreignId('blogtag_id')->constrained('blogtags')->onDelete('cascade');
             $table->timestamps();
         });
-
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('blogtags');
+        Schema::dropIfExists('multitagblog');
     }
 };

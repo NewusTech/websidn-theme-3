@@ -71,7 +71,7 @@
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
                             @if ($logos->images)
-                                <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                             @else
                                 Gambar tidak tersedia
                             @endif
@@ -107,9 +107,9 @@
                     <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
-                    @foreach ($gambar as $index => $carousel)
+                    @foreach ($carousel as $index => $slider)
                     <div class="carousel-item active">
-                        <img src="{{ asset('storage/' . $carousel->path) }}" class="img-fluid" alt="Image">
+                        <img src="{{ Storage::disk('s3')->url($slider->path) }}" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3" style="max-width: 900px;">
                                 <h4 class="text-primary text-uppercase mb-3">Makeup Artist & Beauty Stylist</h4>
@@ -138,7 +138,7 @@
                     @foreach ($about as $abouts)
                     <div class="col-lg-5">
                         <div class="video">
-                            <img src="{{ asset('storage/' . $abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
+                            <img src="{{ Storage::disk('s3')->url($abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
 
                             <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
                                 <span></span>
@@ -165,14 +165,16 @@
                         <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    @foreach ($about as $abouts)
                     <div class="modal-body">
                         <!-- 16:9 aspect ratio -->
                         <div class="ratio ratio-16x9">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/sEhS83z3XRM?si=EHJ0ELO_o-LVvR9_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="{{ $abouts->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             {{-- <iframe class="embed-responsive-item" src="https://youtu.be/sEhS83z3XRM?feature=shared" id="video" allowfullscreen allowscriptaccess="always"
                                 allow="autoplay"></iframe> --}}
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -202,7 +204,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                        <img src="{{ asset('storage/' . $layanan->image) }}" class="img-fluid rounded" alt="">
+                                        <img src="{{ Storage::disk('s3')->url($layanan->image) }}" class="img-fluid rounded" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -230,12 +232,12 @@
                                         @foreach ($gallery as $galeri)
                                         <div class="col-lg-3">
                                             <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ asset('storage/' . $galeri->images->path) }}" alt="">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
                                                 <div class="gallery-overlay p-4">
                                                     <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
                                                 </div>
                                                 <div class="search-icon">
-                                                    <a href="{{ asset('storage/' . $galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -255,9 +257,8 @@
         <!-- Pricing Start -->
         <div class="container-fluid pricing py-2 mb-2"  >
             <div class="container py-3 ">
-                <div class="mx-auto text-center mb-2" style="max-width: 800px;">
-                    <p class="fs-4 text-uppercase text-center text-white"><b>PRICELIST</b></p>
-                    
+                <div class="mb-2" style="max-width: 800px;">
+                    <p class="fs-4 text-uppercase  text-white"><b>PRICELIST</b></p>
                 </div>
                 <div class="owl-carousel pricing-carousel">
                     @foreach ($price as $prices)
@@ -296,7 +297,7 @@
                     <div class="col-md-6 col-lg-6 col-xl-3">
                         <div class="team-item">
                             <div class="team-img rounded-top">
-                                <img src="{{ asset('storage/' . $tim->image) }}" class="img-fluid w-100 rounded-top bg-light" alt="">
+                                <img src="{{ Storage::disk('s3')->url($tim->image) }}" class="img-fluid w-100 rounded-top bg-light" alt="">
                             </div>
                             <div class="team-text rounded-bottom text-center p-4">
                                 <h3 class="text-white">{{ $tim->judul }}</h3>
@@ -326,7 +327,7 @@
                             <div class="col-4">
                                 <div class="d-flex flex-column mx-auto">
                                     <div class="rounded-circle mb-4" style="border: dashed; border-color: var(--bs-white);">
-                                        <img src="{{ asset('storage/' . $review->image) }}" class="img-fluid rounded-circle" alt="">
+                                        <img src="{{ Storage::disk('s3')->url($review->image) }}" class="img-fluid rounded-circle" alt="">
                                     </div>
                                     <div class="text-center">
                                         <h4 class="mb-2 text-primary">{{ $review->name }}</h4>
@@ -366,12 +367,15 @@
                         <div class="footer-item">
                             @foreach ($logo as $logos)
                                 @if ($logos->images)
-                                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                                 @else
                                     Gambar tidak tersedia
                                 @endif
                             @endforeach
-                            <p class="text-white">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tempor dui, non consectetur enim.</p>
+                            @foreach ($about as $abouts)
+                            <p class="text-white">{{ $abouts->text }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">

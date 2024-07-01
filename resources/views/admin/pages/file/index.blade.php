@@ -69,7 +69,7 @@
                         <tr>
                             <td>{{ $file->id }}</td>
                             <td>{{ $file->kategori }}</td>
-                            <td><a href="{{ asset('storage/' . $file->path) }}" target="_blank">Download</a></td>
+                            <td><a href="{{ Storage::disk('s3')->url($file->path) }}" target="_blank">Download</a></td>
                             <td>
                                 <a href="{{ route('file.edit', ['id' => $file->id]) }}"
                                     class="btn btn-primary btn-sm">Edit</a>

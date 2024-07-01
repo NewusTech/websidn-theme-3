@@ -74,7 +74,7 @@
                             <td>{{ $about->video }}</td>
                             <td>
                                 @if ($about->gambar)
-                                    <img src="{{ asset('storage/' . $about->gambar) }}" alt="Gambar About"
+                                    <img src="{{ Storage::disk('s3')->url($about->gambar) }}" alt="Gambar About"
                                         style="max-width: 100px;">
                                 @else
                                     -

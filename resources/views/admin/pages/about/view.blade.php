@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="gambar">Gambar</label><br>
             @if ($about->gambar)
-                <img src="{{ asset('storage/' . $about->gambar) }}" alt="Gambar About" style="max-width: 400px;">
+                <img src="{{ Storage::disk('s3')->url($about->gambar) }}" alt="Gambar About" style="max-width: 400px;">
             @else
                 <p>Tidak ada gambar yang tersedia.</p>
             @endif

@@ -144,13 +144,14 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Blog:</h6>
-                        <a class="collapse-item" href="{{ url('blog') }}"><i class="fas fa-fw fa-list"></i>Daftar
+                        <a class="collapse-item" href="{{ url('blogs') }}"><i class="fas fa-fw fa-list"></i>Daftar
                             Blog</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('blogkategoris') }}"><i class="fas fa-fw fa-pen"></i>Buat
                             Kategori Blog</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('blogtags') }}"><i class="fas fa-fw fa-pen"></i>Buat
                             Kategori Tags</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-globe"></i>Buat
+                        <a class="collapse-item" href="{{ url('blogconsoles') }}"><i
+                                class="fas fa-fw fa-globe"></i>Buat
                             Search Console</a>
                     </div>
                 </div>
@@ -320,15 +321,15 @@
                         </li> --}}
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            </a> --}}
+                        <!-- Dropdown - Messages -->
+                        {{-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
@@ -384,8 +385,8 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More
                                     Messages</a>
-                            </div>
-                        </li>
+                            </div> --}}
+                        {{-- </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -393,24 +394,28 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <div class="img-profile rounded-circle profile-initial">
+                                    {{ substr(Auth::user()->name, 0, 1) }}
+                                </div>
                             </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                </a> --}}
+                                <a class="dropdown-item" href="/">
+                                    <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Konsultasi
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal"

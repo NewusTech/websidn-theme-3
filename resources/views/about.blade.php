@@ -46,7 +46,7 @@
                     <nav class="navbar navbar-light navbar-expand-lg">
                         @foreach ($logo as $logos)
                             @if ($logos->images)
-                                <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                             @else
                                 Gambar tidak tersedia
                             @endif
@@ -93,7 +93,7 @@
                     @foreach ($about as $abouts)
                     <div class="col-lg-5">
                         <div class="video">
-                            <img src="{{ asset('storage/' . $abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
+                            <img src="{{ Storage::disk('s3')->url($abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
 
                             <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
                                 <span></span>
@@ -120,14 +120,16 @@
                         <h5 class="modal-title" id="exampleModalLabel">Youtube Video</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    @foreach ($about as $abouts)
                     <div class="modal-body">
                         <!-- 16:9 aspect ratio -->
                         <div class="ratio ratio-16x9">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/sEhS83z3XRM?si=EHJ0ELO_o-LVvR9_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="{{ $abouts->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             {{-- <iframe class="embed-responsive-item" src="https://youtu.be/sEhS83z3XRM?feature=shared" id="video" allowfullscreen allowscriptaccess="always"
                                 allow="autoplay"></iframe> --}}
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -141,12 +143,15 @@
                         <div class="footer-item">
                             @foreach ($logo as $logos)
                                 @if ($logos->images)
-                                    <img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
+                                    <img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height: 60px">
                                 @else
                                     Gambar tidak tersedia
                                 @endif
                             @endforeach
-                            <p class="text-white">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tempor dui, non consectetur enim.</p>
+                            @foreach ($about as $abouts)
+                            <p class="text-white">{{ $abouts->text }}</p>
+                            @endforeach
+                            
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-12">

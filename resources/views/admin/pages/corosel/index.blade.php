@@ -69,7 +69,7 @@
                         <tr>
                             <td>{{ $corosel->id }}</td>
                             <td>{{ $corosel->resolusi }}</td>
-                            <td><img src="{{ asset('storage/' . $corosel->path) }}" width="100"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($corosel->path) }}" width="100"></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('corosel.edit', $corosel->id) }}" class="btn btn-warning btn-sm"

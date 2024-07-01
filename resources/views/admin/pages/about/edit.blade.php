@@ -34,7 +34,7 @@
             @if ($about->gambar)
                 <div class="form-group">
                     <label>Gambar Saat Ini</label><br>
-                    <img src="{{ asset('storage/' . $about->gambar) }}" alt="Gambar About" style="max-width: 200px;">
+                    <img src="{{ Storage::disk('s3')->url($about->gambar) }}" alt="Gambar About" style="max-width: 200px;">
                 </div>
             @endif
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

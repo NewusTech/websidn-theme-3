@@ -73,7 +73,7 @@
                             <td>{{ $testimoni->name }}</td>
                             <td>{{ $testimoni->job }}</td>
                             <td>{{ $testimoni->description }}</td>
-                            <td><img src="{{ asset('storage/' . $testimoni->image) }}" width="100"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($testimoni->image) }}" width="100"></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('testimoni.edit', $testimoni->id) }}"

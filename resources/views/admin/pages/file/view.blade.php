@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="path">File</label><br>
             @if ($file->path)
-                <a href="{{ asset('storage/' . $file->path) }}" target="_blank">Download</a>
+                <a href="{{ Storage::disk('s3')->url($file->path) }} " target="_blank">Download</a>
             @else
                 <p>Tidak ada file yang tersedia.</p>
             @endif
