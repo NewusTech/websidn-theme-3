@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 01, 2024 at 09:16 AM
+-- Generation Time: Jul 03, 2024 at 03:01 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.2.20
 
@@ -320,7 +320,8 @@ CREATE TABLE `homes` (
 --
 
 INSERT INTO `homes` (`id`, `kategori`, `id_image`, `id_text`, `created_at`, `updated_at`) VALUES
-(1, 'Logo', 1, 1, '2024-07-01 01:02:24', '2024-07-01 01:02:24');
+(1, 'Logo', 1, 1, '2024-07-01 01:02:24', '2024-07-01 01:02:24'),
+(2, 'Header', 6, 6, '2024-07-02 02:23:25', '2024-07-02 02:23:25');
 
 -- --------------------------------------------------------
 
@@ -345,7 +346,8 @@ INSERT INTO `images` (`id`, `resolusi`, `path`, `created_at`, `updated_at`) VALU
 (2, 'Landscape', 'websidn/images/3WWnV1z3aTo6P71oKsOScNqKnwkRRkqInsGPSQjT.png', '2024-07-01 01:00:21', '2024-07-01 01:00:21'),
 (3, 'Landscape', 'websidn/images/f8LZYki8dLxEDEVhhzQHbJWAjCxa4V4Dbk7f71rV.png', '2024-07-01 01:00:33', '2024-07-01 01:00:33'),
 (4, 'Landscape', 'websidn/images/GFWMl1ZGbtBJFTs3lll7WClEagPexrN8gjrb9CNj.png', '2024-07-01 01:00:49', '2024-07-01 01:00:49'),
-(5, 'Landscape', 'websidn/images/Mdpp6NdX2S22NUOIiZYazEPa10Ijh9DqIwsGeWSq.png', '2024-07-01 01:01:00', '2024-07-01 01:01:00');
+(5, 'Landscape', 'websidn/images/Mdpp6NdX2S22NUOIiZYazEPa10Ijh9DqIwsGeWSq.png', '2024-07-01 01:01:00', '2024-07-01 01:01:00'),
+(6, 'Landscape', 'websidn/images/7Oa5t9cQv7TEZKLzWxJUVVII3QkLcb5xD4G7tU7t.jpg', '2024-07-02 02:23:13', '2024-07-02 02:23:13');
 
 -- --------------------------------------------------------
 
@@ -518,7 +520,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('72j98E1Stnc0dNvBXyTh4EYsdvQ7fCedayAOISKd', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNnJRc095dkF5YkQxbk11OEhKZGFKWGJtRUJ2dlRYc1ZiWTRBZHdUWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9rb250YWsta2FtaSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1719825304);
+('72j98E1Stnc0dNvBXyTh4EYsdvQ7fCedayAOISKd', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNnJRc095dkF5YkQxbk11OEhKZGFKWGJtRUJ2dlRYc1ZiWTRBZHdUWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9rb250YWsta2FtaSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7fQ==', 1719825304),
+('fB2MzqfWKDXVRpmIQVFraZdSiQjnbRRJXXkjT6Fd', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZXNpWnR3Sk9Qd2pBZTBBSEJ2TEUweUxlSjBYTHAzc3NnVGZtM2ZrRSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hcnRpa2VsIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1719915138);
 
 -- --------------------------------------------------------
 
@@ -570,7 +573,8 @@ INSERT INTO `texts` (`id`, `title`, `heading`, `subheading`, `paragraph`, `creat
 (2, 'Bridal Makeup', 'Bridal Makeup', 'Bridal Makeup', 'Bridal Makeup', '2024-07-01 01:01:44', '2024-07-01 01:01:44'),
 (3, 'Special Occasion', 'Special Occasion', 'Special Occasion', 'Special Occasion', '2024-07-01 01:01:54', '2024-07-01 01:01:54'),
 (4, 'Photoshoot', 'Photoshoot', 'Photoshoot', 'Photoshoot', '2024-07-01 01:02:02', '2024-07-01 01:02:02'),
-(5, 'Fashion Makeup', 'Fashion Makeup', 'Fashion Makeup', 'Fashion Makeup', '2024-07-01 01:02:12', '2024-07-01 01:02:12');
+(5, 'Fashion Makeup', 'Fashion Makeup', 'Fashion Makeup', 'Fashion Makeup', '2024-07-01 01:02:12', '2024-07-01 01:02:12'),
+(6, 'Header', 'Header', 'Header', 'Header', '2024-07-02 02:21:24', '2024-07-02 02:21:24');
 
 -- --------------------------------------------------------
 
@@ -845,13 +849,13 @@ ALTER TABLE `galeris`
 -- AUTO_INCREMENT for table `homes`
 --
 ALTER TABLE `homes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -893,7 +897,7 @@ ALTER TABLE `testimonis`
 -- AUTO_INCREMENT for table `texts`
 --
 ALTER TABLE `texts`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
