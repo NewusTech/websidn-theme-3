@@ -131,14 +131,135 @@
         </div>
         <!-- Carousel End -->
 
+        
+
+        <!-- Services Start -->
+        <div class="container-fluid bg-third services py-1">
+            <div class="container py-3">
+                <div class="mx-auto text-center mb-2" style="max-width: 800px;">
+                    <p class="fs-4 text-uppercase text-center text-primary"><b>LAYANAN KAMI</b></p>
+                    <h1 class="display-5">Makeup Artist</h1>
+                </div>
+                <div class="row g-4">
+                    @foreach ($service as $layanan)
+                    <div class="col-lg-6">
+                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                    <div class="services-content text-start">
+                                        <h3>{{ $layanan->judul }}</h3>
+                                        <p>{{ $layanan->detail }}</p>
+                                        <div class="text-center">
+                                            <a href="/layanan" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 text-center">Read More</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
+                                        <img src="{{ Storage::disk('s3')->url($layanan->image) }}" class="img-fluid rounded" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <!-- Services End -->
+
+        <!-- Header Section Begin -->
+        @foreach ($header as $headers)
+        <div class="container-fluid py-5 mb-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+            <div class="container py-5 mb-1 ">
+                <div class="container py-5 mb-1 ">
+                    <div class="container py-5 mb-1 ">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+        <!-- Pricing Start -->
+        <div class="container-fluid pricing py-2 mb-2"  >
+            <div class="container py-3 ">
+                <div class="mb-2" style="max-width: 800px;">
+                    <p class="fs-4 text-uppercase  text-white"><b>PRICELIST</b></p>
+                </div>
+                <div class="owl-carousel pricing-carousel">
+                    @foreach ($price as $prices)
+                    <div class="pricing-item">
+                        <div class="rounded pricing-content">
+                            <div class="d-flex align-items-center justify-content-center bg-light rounded-top border-3 border-bottom border-primary p-3">
+                                <h5 class="text-primary text-uppercase text-bold mt-1"><b>{{ $prices->judul }}</b></h5>
+                            </div>
+                            <div class="p-4" style="color: #ffffff"><b>
+                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item1 }}</p>
+                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item2 }}</p>
+                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item3 }}</p>
+                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item4 }}</p>
+                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item5 }}</p>
+                                <a href="/layanan" class="btn btn-primary btn-center btn-primary-outline-0 rounded-pill my-2 px-4">See More</a></b>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Pricing End -->
+
+
+        <!-- Gallery Start -->
+        <div class="container-fluid gallery bg-light py-3">
+            <div class="container py-3">
+                <div class="text-center mx-auto mb-3" style="max-width: 800px;">
+                    <p class="fs-4 text-uppercase text-primary"><b>Galeri Kami</b></p>
+                    <h1 class="display-6 mb-2">Lihat Momen Yang Kami Abadikan</h1>
+                </div>
+                <div class="tab-class text-center">
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="row g-4">
+                                        @foreach ($gallery as $galeri)
+                                        <div class="col-lg-3">
+                                            <div class="gallery-img">
+                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
+                                                <div class="gallery-overlay p-4">
+                                                    <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
+                                                </div>
+                                                <div class="search-icon">
+                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </div>
+            </div>
+        </div>
+        <!-- gallery End -->
+
+
+        
         <!-- About Start -->
-        <div class="container-fluid bg-light about ">
-            <div class="container ">
-                <div class="row g-5 align-items-center">
+        <div class="container-fluid bg-third about mt-5">
+            <div class="container-fluid ">
+                <div class="row align-items-center">
                     @foreach ($about as $abouts)
                     <div class="col-lg-5">
                         <div class="video">
-                            <img src="{{ Storage::disk('s3')->url($abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
+                            <img src="{{ Storage::disk('s3')->url($abouts->gambar) }}" class="img-fluid rounded" alt="">
 
                             <button type="button" class="btn btn-play" data-bs-toggle="modal" data-src="{{ $abouts->video }}" data-bs-target="#videoModal">
                                 <span></span>
@@ -180,113 +301,8 @@
         </div>
         <!-- About End -->
 
-        <!-- Services Start -->
-        <div class="container-fluid bg-third services py-1">
-            <div class="container py-3">
-                <div class="mx-auto text-center mb-2" style="max-width: 800px;">
-                    <p class="fs-4 text-uppercase text-center text-primary"><b>LAYANAN KAMI</b></p>
-                    <h1 class="display-5">Makeup Artist</h1>
-                </div>
-                <div class="row g-4">
-                    @foreach ($service as $layanan)
-                    <div class="col-lg-6">
-                        <div class="services-item bg-light border-4 border-end border-primary rounded p-4">
-                            <div class="row align-items-center">
-                                <div class="col-8">
-                                    <div class="services-content text-start">
-                                        <h3>{{ $layanan->judul }}</h3>
-                                        <p>{{ $layanan->detail }}</p>
-                                        <div class="text-center">
-                                            <a href="/layanan" class="btn btn-primary btn-primary-outline-0 rounded-pill py-2 px-4 text-center">Read More</a>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="services-img d-flex align-items-center justify-content-center rounded">
-                                        <img src="{{ Storage::disk('s3')->url($layanan->image) }}" class="img-fluid rounded" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <!-- Services End -->
-
-        <!-- Gallery Start -->
-        <div class="container-fluid gallery bg-light py-3 mb-5">
-            <div class="container py-3">
-                <div class="text-center mx-auto mb-3" style="max-width: 800px;">
-                    <p class="fs-4 text-uppercase text-primary"><b>Galeri Kami</b></p>
-                    <h1 class="display-6 mb-2">Lihat Momen Yang Kami Abadikan</h1>
-                </div>
-                <div class="tab-class text-center">
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="row g-4">
-                                        @foreach ($gallery as $galeri)
-                                        <div class="col-lg-3">
-                                            <div class="gallery-img">
-                                                <img class="img-fluid rounded w-100" src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="">
-                                                <div class="gallery-overlay p-4">
-                                                    <h4 class="text-secondary">{{ $galeri->texts->heading }}</h4>
-                                                </div>
-                                                <div class="search-icon">
-                                                    <a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-search-plus btn-primary btn-primary-outline-0 rounded-circle p-3"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                </div>
-            </div>
-        </div>
-        <!-- gallery End -->
-
-
-        <!-- Pricing Start -->
-        <div class="container-fluid pricing py-2 mb-2"  >
-            <div class="container py-3 ">
-                <div class="mb-2" style="max-width: 800px;">
-                    <p class="fs-4 text-uppercase  text-white"><b>PRICELIST</b></p>
-                </div>
-                <div class="owl-carousel pricing-carousel">
-                    @foreach ($price as $prices)
-                    <div class="pricing-item">
-                        <div class="rounded pricing-content">
-                            <div class="d-flex align-items-center justify-content-center bg-light rounded-top border-3 border-bottom border-primary p-3">
-                                <h5 class="text-primary text-uppercase text-bold mt-1"><b>{{ $prices->judul }}</b></h5>
-                            </div>
-                            <div class="p-4" style="color: #ffffff"><b>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item1 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item2 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item3 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item4 }}</p>
-                                <p><i class="fa fa-check text-primary me-2"></i>{{ $prices->item5 }}</p>
-                                <a href="/layanan" class="btn btn-primary btn-center btn-primary-outline-0 rounded-pill my-2 px-4">See More</a></b>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    
-                </div>
-            </div>
-        </div>
-        <!-- Pricing End -->
-
-
         <!-- Team Start -->
-        <div class="container-fluid team bg-third py-2">
+        <div class="container-fluid team bg-light py-2">
             <div class="container py-2">
                 <div class="text-center mx-auto mb-3" style="max-width: 800px;">
                     <p class="fs-4 text-uppercase text-primary"><b>TEAM KAMI</b></p>

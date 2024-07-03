@@ -31,7 +31,7 @@ class FrontController extends Controller
         $price = Prices::all()->take(4);
         $gallery = Galeris::with(['images','texts'])->take(4)->get();
         $team = Cards::all()->where('kategori', 'Pegawai')->take(4);
-        $testimoni = Testimonis::all()->take(4);
+        $testimoni = Testimonis::all()->take(3);
         $contact = Contacts::all();
         return view('home', compact(
             'logo',

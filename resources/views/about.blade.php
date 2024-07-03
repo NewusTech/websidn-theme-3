@@ -88,10 +88,10 @@
         
         <!-- About Start -->
         <div class="container-fluid bg-light about py-3 ">
-            <div class="container ">
+            <div class="container-fluid ">
                 <div class="row g-5 align-items-center">
                     @foreach ($about as $abouts)
-                    <div class="col-lg-5">
+                    <div class="col-lg-6">
                         <div class="video">
                             <img src="{{ Storage::disk('s3')->url($abouts->gambar) }}" class="img-fluid rounded my-2" alt="">
 
@@ -100,7 +100,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-6">
                         <p class="fs-4 text-uppercase text-primary"><b>Tentang Kami</b></p>
                         <h1 class="display-5 mb-2">{{ $abouts->judul }}</h1>
                         <p class="mb-5">{{ $abouts->text }}
